@@ -1,0 +1,40 @@
+html {
+    --floors: 3;
+    --currentFloor: 0;
+}
+
+.elevatorShaft {
+    display: block;
+    position: relative;
+    height: calc( var( --floors ) * 200px);
+    width: 120px;
+    background-color: #333;
+}
+
+.elevator {
+    display:block;
+    position: absolute;
+    background-color: #666;
+    width: 100px;
+    height: 200px;
+    left: 10px;
+    bottom: calc( var( --currentFloor ) * 200px);
+    transition: bottom 1s ease-in-out;
+}
+
+.floorButtons {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    background-color: #888;
+}
+
+.floorButton {
+    text-align: center;
+    padding: 16px 32px;
+    font-weight: lighter;
+    margin-bottom: 8px;
+}
+
+
+
