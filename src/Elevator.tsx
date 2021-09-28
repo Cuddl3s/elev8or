@@ -23,12 +23,24 @@ export const Elevator = ({ level }: { level: number }) => (
   </div>
 );
 
-export const ElevatorControls = () => {
+export const ElevatorControls = ({
+  setCurrentLevel,
+}: {
+  setCurrentLevel: (level: number) => void;
+}) => {
   const floorButtons = [];
   for (let i = FLOOR_AMOUNT - 1; i >= 0; i--) {
+    let elevatorIsAtThisFloor = false;
     floorButtons.push(
-      <button className={styles.floorButton} key={i}>
-        Etage {i}
+      <button
+        onClick={() => setCurrentLevel(i)}
+        className={styles.floorButton}
+        key={i}
+      >
+        <div>
+          <div className={styles.floorText}>Etage {i} </div>
+          {elevatorIsAtThisFloor && <span className={styles.floorLight} />}
+        </div>
       </button>
     );
   }

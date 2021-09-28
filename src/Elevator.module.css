@@ -36,5 +36,23 @@ html {
     margin-bottom: 8px;
 }
 
+.floorButton > div {
+    display: flex;
+    align-items: center;
+}
+
+.floorText {
+    margin-right: 8px;
+}
+
+.floorLight {
+    flex: 1;
+    display: block;
+    border-radius: 50%;
+    background-color: red;
+    height: 8px;
+    width: 8px;
+}
+
 
 
