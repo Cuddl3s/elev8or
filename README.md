@@ -1,4 +1,5 @@
 # Elev8or Part 1
+(Check out branches for the other parts)
 
 ## Installation
 * `yarn` to install dependencies
