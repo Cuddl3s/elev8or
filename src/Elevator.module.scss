@@ -54,5 +54,32 @@ html {
     width: 8px;
 }
 
+.doors {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.door {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: width 1s ease-in;
+    background-color: #888;
+
+    .open & {
+        width: 5%;
+    }
+}
+
+.left {
+    left: 0
+}
+
+.right {
+    right: 0;
+}
+
 
 

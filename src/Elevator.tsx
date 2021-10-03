@@ -1,5 +1,6 @@
 import { CSSProperties, ForwardedRef, forwardRef } from "react";
-import styles from "./Elevator.module.css";
+import styles from "./Elevator.module.scss";
+import classNames from "classnames";
 
 const FLOOR_AMOUNT = 3;
 
@@ -11,8 +12,10 @@ export const Elevator = forwardRef(
   (
     {
       level,
+      open = false,
     }: {
       level: number;
+      open?: boolean;
     },
     ref: ForwardedRef<HTMLDivElement>
   ) => (
@@ -26,13 +29,18 @@ export const Elevator = forwardRef(
     >
       <div
         ref={ref}
-        className={styles.elevator}
+        className={classNames(styles.elevator, open && styles.open)}
         style={
           {
             "--currentFloor": level,
           } as CSSProperties
         }
-      />
+      >
+        <div className={styles.doors}>
+          <div className={classNames(styles.door, styles.left)} />
+          <div className={classNames(styles.door, styles.right)} />
+        </div>
+      </div>
     </div>
   )
 );
