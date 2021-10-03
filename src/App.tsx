@@ -8,22 +8,35 @@ function App() {
   const elevatorRef = useRef<HTMLDivElement>(null);
 
   const addToButtonQueue = (newLevel: number) => {
+    //
     // Here you have to create a new queue that also includes the given newLevel,
     // and set your queue to the new value
   };
+
+  useEffect(() => {
+    // This fires whenever our queue changes
+
+    // First we need a check: When our queue is empty, we don't want anything to happen
+    const queueIsEmpty = false;
+    if (queueIsEmpty) return;
+    // If the queue is not empty (if something has been added to it for example)
+    // We want the elevator to move to the next destination after a set amount of time
+    const timeUntilTheElevatorMovesInMS = 1000; // 1 second
+    const timeOut = setTimeout(() => {
+      // Here, we want to set the current level to an element in the queue (but dont't remove it from the queue yet)
+      // The removing will be done when the elevator reaches the floor
+    }, timeUntilTheElevatorMovesInMS);
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [queue]);
 
   useEffect(() => {
     const currentElevatorRef = elevatorRef.current;
     // This function is put into a variable here so that we can remove the function reference in the cleanup function
     // returned from the useEffect
     const onReachFloor = () => {
-      // This fires as soon as the css transition is over
-      // (that means, as soon as the elevator reaches its destination floor)
-      // Here, you can set the next destination for the elevator.
-      // So first check whether there are still destinations in your queue, and if so,
-      // Remove one of them, set it as the current level and remove it from the queue.
-      // When that works, only do it after a set time (so that the elevator stops at a floor, waits for x seconds,
-      // and then goes to the next floor. BUT ONLY AFTER THE FIRST PART WORKS!
+      // When we reach the destination floor, we want to remove that floor from our queue
       console.log(`Reached floor ${currentLevel}`);
     };
 
