@@ -7,7 +7,7 @@ const FLOOR_AMOUNT = 3;
 // Explanation for the ref: refs are kind of how you get a certain HTML element the "react way".
 // You don't use document selectors like getElementById etc., but you create a ref(erence) by using useRef,
 // and you set that as a prop onto an HTML element. That ref will then hold a reference to the HTML element in it's
-// 'current' value (so you can access it by using ref.current). This is how you set listeners etc on HTML elements.
+// 'current' value (so you can access it by using ref.current). This is how you can set listeners etc on HTML elements.
 export const Elevator = forwardRef(
   (
     {
@@ -36,7 +36,12 @@ export const Elevator = forwardRef(
           } as CSSProperties
         }
       >
-        <div className={styles.doors}>
+        <div
+          ref={(el) => {
+            el?.addEventListener("transitionend", (e) => e.stopPropagation());
+          }}
+          className={styles.doors}
+        >
           <div className={classNames(styles.door, styles.left)} />
           <div className={classNames(styles.door, styles.right)} />
         </div>
